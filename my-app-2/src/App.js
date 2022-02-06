@@ -3,12 +3,25 @@ import TextForm from "./Components/TextForm";
 import React,{useState} from 'react';
 
 function App() {
-  const[darkMode,setDarkMode] = useState('false');
+  const[mode,setMode] = useState('light');
+
+const toggleMode = () => {
+  if(mode == 'light'){
+    setMode('dark');
+    document.body.style.backgroundColor = '#383f45';
+  }
+  else if(mode == 'dark'){
+    setMode('light');
+    document.body.style.backgroundColor = 'white';
+  }
+  
+}
+
   return (
     <>
-      <Navbar  mode = {darkMode} /> 
+      <Navbar  mode = {mode} toggleMode={toggleMode} /> 
       <div className = 'container'>
-        <TextForm heading = "Enter the text here"/>
+        <TextForm heading = "Enter the text here" mode = {mode}/>
       </div>
   </>
   );
